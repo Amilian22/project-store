@@ -5,6 +5,10 @@ import authRequired from "../middlewares/validateToken.js";
 const router = Router();
 
 
+router.get("/", (req, res) => {
+    res.render("homepage.ejs")
+})
+
 router.get("/register", (req, res) => {
     res.render("register.ejs")
 });

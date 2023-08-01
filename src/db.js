@@ -6,8 +6,9 @@ key.config();
 
 
 const connectDB = async () => {
+    const url = process.env.MONGO_ATLAS_KEY;
     try {
-        await mongoose.connect(process.env.MONGO_ATLAS_KEY);
+        await mongoose.connect(url);
         console.log("DB is connect");
     } catch (error) {
         console.log(error)

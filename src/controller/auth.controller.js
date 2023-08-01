@@ -57,7 +57,7 @@ export const profile = async (req, res) => {
     if (!userFound) {
         res.redirect("/login")
     };
-    const pokeRandom = Math.floor(Math.random() * 1280 + 1);
+    const pokeRandom = Math.floor(Math.random() * 280 + 1);
     const pokemon = await ((await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeRandom)).json());
     console.log(pokeRandom)
     return res.render("profile.ejs", { content: userFound.username, img: pokemon.sprites.front_default })

@@ -5,9 +5,7 @@ import { createTask, getTasks, deleteTask } from "../controller/task.controller.
 
 const router = Router();
 
-router.get("/", (req, res) => {
-    res.render("homepage.ejs")
-})
+
 
 router.get("/profile", (req, res) => {
     res.render("profile.ejs")
