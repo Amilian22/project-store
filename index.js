@@ -1,15 +1,30 @@
-import app from "./src/app.js";
 import connectDB from "./src/db.js";
 
-
 const port = 3000;
-const api = app
+
+
+
+import express from "express";
+import authRoutes from "./src/routes/auth.routes.js";
+import taskRoutes from "./src/routes/task.routes.js";
+import cookieParser from "cookie-parser";
+const app = express();
+
 connectDB();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-api.listen(port, () => {
+app.set("view engine", "ejs");
+app.use(cookieParser());
+app.use(express.static("public"))
+
+app.use(authRoutes);
+app.use(taskRoutes)
+
+app.listen(port, () => {
     console.log(`Server running on port:${port}`);
 })
 
 
-export default api;
+export default app
