@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 import key from "dotenv";
 
 key.config();

@@ -1,6 +1,8 @@
 import User from "../models/auth.models.js"
 import bcrypt from "bcryptjs";
 import createAccesToken from "../libs/jwt.js";
+import { pokeApi } from "../config.js"
+
 
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
@@ -14,13 +16,7 @@ export const register = async (req, res) => {
         const userSaved = await newUser.save();
         const token = await createAccesToken({ id: userSaved._id });
         res.cookie("token", token)
-        // res.json({
-        //     id: userSaved._id,
-        //     username: userSaved.username,
-        //     email: userSaved.email,
-        //     createdat: userSaved.createdAt,
-        //     updatedat: userSaved.updatedAt
-        // })
+
         res.redirect("/login")
 
     } catch (err) {
@@ -58,7 +54,6 @@ export const profile = async (req, res) => {
         res.redirect("/login")
     };
     const pokeRandom = Math.floor(Math.random() * 280 + 1);
-    const pokemon = await ((await fetch("https://pokeapi.co/api/v2/pokemon/" + pokeRandom)).json());
-    console.log(pokeRandom)
+    const pokemon = await ((await fetch(pokeApi + pokeRandom)).json());
     return res.render("profile.ejs", { content: userFound.username, img: pokemon.sprites.front_default })
 }
