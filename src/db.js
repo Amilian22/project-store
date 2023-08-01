@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-import { config } from "dotenv";
+import key from "dotenv";
 
-const run = config();
+key.config();
 
 
 const connectDB = async () => {
