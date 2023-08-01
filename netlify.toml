@@ -1,0 +1,10 @@
+[functions]
+    external_node_modules=["express","ejs","mongoose","bcryptjs","cookie-parser","dotenv","jsonwebtoken"]
+    node_bundler="esbuild"
+    included_files=["views/*","views/partials/*","public/styles/*","public/images/*","src/*","src/controller/*","src/libs/*","src/middlewares/*","src/models/*","src/routes/*"]
+
+[[redirects]]
+    force=true
+    from="/*"
+    status = 200
+    to = "/.netlify/functions/api/:splat"

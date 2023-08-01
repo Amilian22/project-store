@@ -1,0 +1,18 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <h1>Log in</h1>
+        <form action="/login" method="post">
+            <p>
+                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" autocomplete="off">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </p>
+            <button>Login</button>
+        </form>
+    </main>
+
+    <%- include("partials/footer.ejs") %>

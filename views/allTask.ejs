@@ -1,0 +1,50 @@
+<%- include("partials/headerprofile.ejs") %>
+
+    <main>
+        <nav class="navbar">
+            <div class="profile">
+                <p>Hi! </p>
+            </div>
+            <ul>
+                <li><a href="/profile">Home</a></li>
+                <li><a href="/tasks">Tasks</a></li>
+                <li><a href="/task">Add Task</a></li>
+                <li><a href="">Edit Task</a></li>
+                <li>
+                    <form action="/logout" method="post">
+                        <button type="submit" id="logout"><span class="span">Log Out </span><i class="fa fa-sign-out"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+        <section id="tasks">
+            <% if(locals.content){%>
+                <% content.forEach((task)=>{%>
+                    <div class="container-tasks">
+                        <form action="/delete" method="post">
+                            <div class="title">
+                                <button type="submit" name="boton" value="<%= task._id %>"
+                                    onclick="this.form.submit()">X</button>
+                                <h1>
+                                    <%= task.title %>
+                                </h1>
+                            </div>
+                            <div class="description">
+                                <p>
+                                    <%= task.description %>
+                                </p>
+                            </div>
+                            <!-- <input type="checkbox" name="checkbox" value="<%= task._id %>" onclick="this.form.submit()"> -->
+
+                        </form>
+                    </div>
+
+                    <% }) %>
+                        <%} %>
+        </section>
+
+    </main>
+
+    <%- include("partials/footer.ejs") %>

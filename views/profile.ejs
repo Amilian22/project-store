@@ -1,0 +1,27 @@
+<%- include("partials/headerprofile.ejs") %>
+
+    <main>
+        <nav class="navbar">
+            <div class="profile">
+                <p>Hi! <%= content %>
+                </p>
+                <img src="<%= img %>" alt="">
+            </div>
+            <ul>
+                <li><a href="/profile">Home</a></li>
+                <li><a href="/tasks">Tasks</a></li>
+                <li><a href="/task">Add Task</a></li>
+                <li><a href="">Edit Task</a></li>
+                <li>
+                    <form action="/logout" method="post">
+                        <button type="submit" id="logout">Log Out <i class="fa fa-sign-out"
+                                aria-hidden="true"></i></button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+
+    </main>
+
+    <%- include("partials/footer.ejs") %>
